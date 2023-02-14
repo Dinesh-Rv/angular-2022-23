@@ -1,0 +1,25 @@
+<div class="task-list-container">
+  <ul class="task-list" id="task-list">
+    <li
+      *ngFor="let task of tasks"
+      [ngClass]="task.id == selectedTaskId ? 'task task-selected' : 'task'"
+    >
+      <i
+        [ngClass]="
+          task.isCompleted ? 'fa-solid fa-circle-check' : 'fa-regular fa-circle'
+        "
+        (click)="applyTaskStatus(task)"
+      ></i>
+      <div class="task-info" (click)="applySelectedTask(task)">
+        <p [ngClass]="task.isCompleted ? 'completed-task-name' : 'task-name'">
+          {{ task.name }}
+        </p>
+        <p class="labels">tasks</p>
+      </div>
+      <i
+        [ngClass]="task.isImportant ? 'fa-solid fa-star' : 'fa-regular fa-star'"
+        (click)="applyTaskImportant(task)"
+      ></i>
+    </li>
+  </ul>
+</div>

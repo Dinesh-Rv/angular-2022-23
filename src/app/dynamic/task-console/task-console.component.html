@@ -1,0 +1,83 @@
+<!--Contains a sidebar for selected task console operation eg. note-->
+<div class="right-side" id="right-side">
+  <div class="right-side-top">
+    <div class="right-side-main">
+      <div class="selected-task" id="selected-task">
+        <i
+          [ngClass]="
+            selectedTask.isCompleted
+              ? 'fa-solid fa-circle-check'
+              : 'fa-regular fa-circle'
+          "
+          (click)="applyTaskStatus(selectedTask)"
+        ></i>
+        <p
+          [ngClass]="
+            selectedTask.isCompleted ? 'completed-task-name' : 'task-name'
+          "
+        >
+          {{ selectedTask.name }}
+        </p>
+        <i
+          [ngClass]="
+            selectedTask.isImportant ? 'fa-solid fa-star' : 'fa-regular fa-star'
+          "
+          (click)="applyTaskImportant(selectedTask)"
+        ></i>
+      </div>
+      <div class="task-console">
+        <div class="task-steps">
+          <i class="fa-regular fa-circle"></i>
+          <p>Add step</p>
+        </div>
+        <div class="my-day-status">
+          <i class="material-icons">light_mode</i>
+          <p>Added To My Day</p>
+        </div>
+        <div class="reminder">
+          <i class="material-icons">notifications</i>
+          <p>Remind me</p>
+        </div>
+        <div class="due-date">
+          <i class="material-icons">calendar_month</i>
+          <p>Add due date</p>
+        </div>
+        <div class="repeat-task">
+          <i class="material-icons">repeat</i>
+          <p>Repeat</p>
+        </div>
+        <div class="pick-category">
+          <i class="material-icons">sell</i>
+          <p>Pick a category</p>
+        </div>
+        <div class="add-file">
+          <i class="material-icons">attach_file</i>
+          <p>Add file</p>
+        </div>
+        <div class="selected-task-note">
+          <input class="add-note" type="text" placeholder="Add note" />
+          <div class="update-status">
+            <p id="note-status"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <!--Extra accessibilities for right side, eg. hide and delete-->
+  <div class="right-side-bottom">
+    <div
+      class="hide-right-side"
+      id="hide-right-side"
+      (click)="removeSelectedTask()"
+    >
+      <i class="material-icons">logout</i>
+    </div>
+    <div class="task-created-at">
+      <p></p>
+    </div>
+    <div class="delete-selected-task">
+      <i class="material-icons">delete</i>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,198 @@
+.right-side {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 6px;
+  height: 560px;
+  padding: 0px 20px 0px 30px;
+  box-shadow: 1px 1px 3px gray;
+  width: 23.5%;
+  background-color: #faf9f8;
+
+  hr {
+    width: 300px;
+    height: 0.1px;
+    border-radius: 0.5px;
+    border: 0px;
+    margin-right: 20px;
+    background-color: gray;
+    opacity: 0.4;
+  }
+
+  .right-side-top {
+    height: 470px;
+
+    .right-side-main {
+      font-size: 15px;
+      margin-top: 20px;
+      height: 100%;
+      width: 300px;
+
+      .task-console {
+        height: 90%;
+        overflow-y: auto;
+
+        .selected-task-note {
+          width: 298px;
+          height: 95px;
+          background-color: #ffffff;
+          margin-bottom: 10px;
+
+          .add-note {
+            border: 0px;
+            outline: none;
+            width: 95%;
+            margin-left: 10px;
+            height: 70%;
+          }
+
+          .update-status {
+            margin-left: 10px;
+          }
+
+          .update-status p {
+            margin: 0px;
+            font-size: 13px;
+            opacity: 0.6;
+          }
+        }
+
+        .my-day-status i,
+        .my-day-status p,
+        .reminder p,
+        .reminder i,
+        .due-date p,
+        .due-date i,
+        .repeat-task p,
+        .repeat-task i,
+        .pick-category i,
+        .pick-category p,
+        .add-file p,
+        .add-file i {
+          display: inline-block;
+          vertical-align: middle;
+          margin-left: 10px;
+          color: gray;
+        }
+
+        .my-day-status,
+        .task-steps,
+        .reminder,
+        .due-date,
+        .repeat-task,
+        .pick-category,
+        .add-file {
+          background-color: #ffffff;
+          border-radius: 2px;
+        }
+
+        .my-day-status,
+        .reminder,
+        .pick-category,
+        .add-file,
+        .selected-task-note {
+          margin-top: 10px;
+        }
+
+        .due-date,
+        .repeat-task {
+          margin-top: 2px;
+        }
+
+        .task-steps i,
+        .task-steps p {
+          display: inline-block;
+          margin: 0px;
+        }
+
+        .pick-category .material-icons {
+          transform: scaleX(-1);
+        }
+
+        .add-file i {
+          transform: rotate(230deg);
+        }
+
+        .my-day-status:hover,
+        .task-steps:hover,
+        .reminder:hover,
+        .due-date:hover,
+        .repeat-task:hover,
+        .pick-category:hover,
+        .add-file:hover {
+          background-color: #faf9f8;
+          cursor: pointer;
+        }
+      }
+
+      .selected-task .completed-task-name {
+        opacity: 0.6;
+        text-decoration: line-through;
+      }
+
+      .selected-task i,
+      .selected-task p {
+        display: inline-block;
+        margin: 0px;
+      }
+
+      .task-console .task-steps p {
+        padding-left: 16px;
+        width: 200px;
+        font-size: 14px;
+      }
+
+      .selected-task {
+        background-color: #ffffff;
+        color: #2564cf;
+
+        p {
+          padding-left: 16px;
+          width: 200px;
+          font-size: 16px;
+          font-weight: bold;
+          pointer-events: none;
+        }
+      }
+
+      .selected-task,
+      .task-console .task-steps {
+        padding: 16px;
+      }
+
+      .selected-task:hover {
+        cursor: pointer;
+        background-color: #f5f5f5;
+      }
+
+      .task-console::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  .right-side-bottom {
+    font-size: 13px;
+    margin-top: 20px;
+
+    .hide-right-side,
+    .task-created-at,
+    .delete-selected-task {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 10px;
+      color: gray;
+    }
+
+    .task-created-at p {
+      width: 210px;
+      margin: 0px 0px 9px 0px;
+      text-align: center;
+    }
+
+    .hide-right-side:hover,
+    .delete-selected-task:hover {
+      background-color: #ffffff;
+      cursor: pointer;
+    }
+  }
+}

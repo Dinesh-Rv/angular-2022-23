@@ -1,0 +1,13 @@
+<ul class="sidebar-category" id="sidebar-category">
+  <li
+    *ngFor="let category of categories"
+    [ngClass]="
+      category.id == selectedCategory.id ? 'category-selected' : 'category'
+    "
+    (click)="applySelectedCategory(category)"
+  >
+    <i class="material-icons">{{ category.iconName }}</i>
+    <p class="category-text">{{ category.name }}</p>
+    <hr *ngIf="category.id == 5" class="split-category" />
+  </li>
+</ul>

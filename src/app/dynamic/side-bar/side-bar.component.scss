@@ -1,0 +1,106 @@
+.left-side {
+  display: inline-block;
+  background-color: white;
+  height: 560px;
+  width: 22%;
+  margin-top: 0px;
+
+  .sidebar-content {
+    height: 450px;
+    overflow-y: auto;
+
+    .sidebar-category .category {
+      height: 45px;
+    }
+
+    .sidebar-category .category-selected {
+      height: 45px;
+    }
+
+    .sidebar-center .add-new-list,
+    .sidebar-center .create-group-icon {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .sidebar-center .add-new-list {
+      color: #2564cf;
+      width: 198px;
+      padding-left: 23px;
+    }
+
+    .sidebar-center .add-new-list .left-side-icon,
+    .sidebar-center .add-new-list .new-list-text,
+    .sidebar-center .add-new-list .new-list-text .left-side-icon,
+    .sidebar-center .add-new-list .new-list-text input {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .sidebar-center .add-new-list .new-list-text {
+      margin-left: 15px;
+      font-size: 14px;
+    }
+
+    .sidebar-center .add-new-list .new-list-text input {
+      border: 0px none;
+      outline: none;
+      width: 150px;
+      height: 50px;
+    }
+
+    .sidebar-center .add-new-list .new-list-text input::placeholder {
+      color: #2564cf;
+    }
+
+    .sidebar-center .create-group-icon {
+      color: #2564cf;
+      padding: 10px;
+    }
+
+    .sidebar-center .create-group-icon:hover {
+      background-color: #f5f5f5;
+    }
+  }
+
+  .sidebar-bottom .accessibility {
+    display: inline-block;
+    padding: 6% 6.2% 5% 6.23%;
+    margin: 0px;
+
+    .material-icons {
+      font-size: 21px;
+    }
+  }
+
+  .menu-icon {
+    margin-top: 28px;
+    margin-bottom: 0px;
+    margin-left: 23px;
+    width: 25px;
+
+    .material-icons {
+      pointer-events: none;
+    }
+  }
+
+  .sidebar-content::-webkit-scrollbar {
+    display: none;
+  }
+
+  .menu-icon:hover {
+    cursor: pointer;
+  }
+
+  .sidebar-content .sidebar-center .add-new-list .new-list-text input {
+    background: transparent;
+  }
+
+  .sidebar-content .sidebar-center .add-new-list:hover {
+    background-color: #f5f5f5;
+  }
+
+  .sidebar-bottom .accessibility:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+  }
+}

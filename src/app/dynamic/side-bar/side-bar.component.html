@@ -1,0 +1,48 @@
+<div class="left-side" id="left-side">
+  <div class="menu-icon" id="left-side-nav" (click)="hideSideBar()">
+    <i class="material-icons">menu</i>
+  </div>
+  <!-- Sidebar content to set scrollable -->
+  <div class="sidebar-content">
+    <!-- List for holding task category -->
+    <app-side-bar-category [newCategory]="newCategory"></app-side-bar-category>
+    <!-- Center in left side which has the feature to add new list -->
+    <div class="sidebar-center">
+      <div class="add-new-list">
+        <div class="left-side-icon">
+          <i class="material-icons">add</i>
+        </div>
+        <div class="new-list-text">
+          <input
+            [(ngModel)]="category"
+            type="text"
+            id="new-category"
+            placeholder="New List"
+            (keyup.enter)="addCategory(category); category = ''"
+          />
+        </div>
+      </div>
+      <div class="create-group-icon" id="submit-new-category">
+        <i class="material-icons">assignment_add</i>
+      </div>
+    </div>
+  </div>
+  <!-- Contains extra features in left side -->
+  <div class="sidebar-bottom">
+    <div class="accessibility">
+      <i class="material-icons">mail</i>
+    </div>
+    <div class="accessibility">
+      <i class="material-icons">calendar_month</i>
+    </div>
+    <div class="accessibility">
+      <i class="material-icons">group</i>
+    </div>
+    <div class="accessibility">
+      <i class="material-icons">attach_file</i>
+    </div>
+    <div class="accessibility">
+      <i class="material-icons">done_outline</i>
+    </div>
+  </div>
+</div>

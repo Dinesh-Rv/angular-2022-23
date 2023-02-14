@@ -1,0 +1,89 @@
+.top-container {
+  background-color: #2564cf;
+
+  .right-corner {
+    display: inline-block;
+    width: 37%;
+    text-align: right;
+
+    .settings-icon,
+    .help-icon,
+    .whats-new-icon,
+    .account-icon {
+      vertical-align: middle;
+      background-color: #2564cf;
+      color: #ffffff;
+      height: 48px;
+      width: 48px;
+      border: 0ch;
+
+      .material-icons {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .to-do-link {
+    height: 25px;
+    width: 60px;
+    text-align: center;
+    margin: 0px;
+
+    .to-do {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  }
+
+  .to-do-link,
+  .search-bar {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .apps-icon {
+    vertical-align: middle;
+    background-color: #2564cf;
+    color: #ffffff;
+    height: 48px;
+    width: 48px;
+    border: 0ch;
+
+    .material-icons {
+      font-size: 20px;
+    }
+  }
+
+  .to-do-link a:hover {
+    text-decoration: underline;
+  }
+
+  .search-bar:hover {
+    cursor: pointer;
+    background-color: #f5f5f5;
+  }
+
+  .apps-icon:hover,
+  .right-corner button:hover,
+  .right-corner button:hover {
+    cursor: pointer;
+    background-color: #215aba;
+  }
+
+  .search-bar {
+    border: 0ch;
+    background-color: #ffffff;
+    text-align: left;
+    width: 32.5%;
+    height: 32px;
+    margin-left: 21%;
+    border-radius: 5px;
+
+    .material-icons {
+      color: #2564cf;
+      transform: scaleX(-1);
+      margin-top: 3px;
+    }
+  }
+}

@@ -1,0 +1,104 @@
+.task-list-container {
+  height: 333px;
+  width: 100%;
+  overflow-y: auto;
+
+  .task-list {
+    list-style: none;
+    padding-left: 25px;
+
+    .task {
+      height: 50px;
+      width: 99.8%;
+      display: block;
+      background-color: #ffffff;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      box-shadow: 1px 0px 3px grey;
+    }
+
+    .task-selected {
+      background-color: #eff6fc;
+    }
+
+    li i {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0% 2% 0% 5.5%;
+      color: #2564cf;
+      height: 25px;
+    }
+
+    li .task-info {
+      display: inline-block;
+      font-size: 13px;
+      color: gray;
+      height: 50px;
+      width: 77%;
+      vertical-align: middle;
+      margin-bottom: 5px;
+      margin-left: 1%;
+
+      .task-name {
+        margin: 5px 0px 0px 0px;
+        font-size: 15px;
+        color: black;
+      }
+
+      .completed-task-name {
+        text-decoration: line-through;
+        opacity: 0.6;
+        margin: 5px 0px 0px 0px;
+        font-size: 15px;
+        color: black;
+      }
+
+      .labels {
+        margin: 0px 0px 5px 0px;
+      }
+
+      p {
+        pointer-events: none;
+      }
+    }
+
+    .user-selected-task {
+      background-color: #eff6fc;
+    }
+
+    .user-selected-task:hover {
+      background-color: #eff6fc;
+    }
+
+    .task:hover {
+      cursor: pointer;
+      background-color: #f5f5f5;
+    }
+
+    .task-selected:hover {
+      background-color: #eff6fc;
+    }
+  }
+
+  hr {
+    width: 94%;
+  }
+
+  .completed-task-header {
+    p {
+      display: inline-block;
+    }
+
+    .header-text {
+      font-weight: bold;
+    }
+
+    .count {
+      margin-left: 2%;
+    }
+  }
+
+  .completed-task-header:hover {
+    cursor: pointer;
+  }
+}
