@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
 import { CommonService } from 'src/app/common.service';
 import { Task } from 'src/app/Task';
 import { ToDoService } from 'src/app/to-do.service';
@@ -9,6 +10,7 @@ import { ToDoService } from 'src/app/to-do.service';
   styleUrls: ['./task-console.component.scss'],
 })
 export class TaskConsoleComponent implements OnInit {
+  noteText!: string;
   selectedTask!: Task;
   constructor(
     private toDoService: ToDoService,
@@ -43,11 +45,19 @@ export class TaskConsoleComponent implements OnInit {
   }
 
   saveOrUpdateTask(task: Task) {
-    this.toDoService.saveOrUpdateTask(task, 'task').subscribe((response) => {
-      // if (response) {
-      //   this.getAllTasks;
-      // }
-    });
+    this.toDoService.saveOrUpdateTask(task, 'task').subscribe((response) => {});
+  }
+
+  addNote(noteText: string) {
+    this.selectedTask.note = noteText;
+    this.selectedTask.noteSavedAt = moment().format('dddd, MMMM D');
+    this.toDoService
+      .saveOrUpdateTask(this.selectedTask, 'task')
+      .subscribe((response) => {
+        if (response) {
+          this.commonService.applySelectedTask(response);
+        }
+      });
   }
 
   removeSelectedTask() {

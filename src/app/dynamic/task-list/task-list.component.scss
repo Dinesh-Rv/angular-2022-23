@@ -101,4 +101,23 @@
   .completed-task-header:hover {
     cursor: pointer;
   }
+
+  .completed-task-header {
+    .material-icons {
+      font-weight: lighter;
+      display: inline-block;
+      margin-left: 16px;
+      vertical-align: middle;
+    }
+
+    p {
+      font-weight: bolder;
+      margin-left: 10px;
+      display: inline-block;
+    }
+  }
+}
+
+.task-list-container::-webkit-scrollbar {
+  display: none;
 }

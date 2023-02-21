@@ -1,17 +1,9 @@
 <div class="task-list-container">
-  <ul class="task-list" id="task-list">
-    <li
-      *ngFor="let task of tasks"
-      [ngClass]="task.id == selectedTaskId ? 'task task-selected' : 'task'"
-    >
-      <i
-        [ngClass]="
-          task.isCompleted ? 'fa-solid fa-circle-check' : 'fa-regular fa-circle'
-        "
-        (click)="applyTaskStatus(task)"
-      ></i>
+  <ul class="task-list" id="task-list" *ngFor="let task of inCompleteTasks">
+    <li [ngClass]="task.id == selectedTaskId ? 'task task-selected' : 'task'">
+      <i class="fa-regular fa-circle" (click)="applyTaskStatus(task)"></i>
       <div class="task-info" (click)="applySelectedTask(task)">
-        <p [ngClass]="task.isCompleted ? 'completed-task-name' : 'task-name'">
+        <p class="task-name" [appStrikeout]="task.isCompleted">
           {{ task.name }}
         </p>
         <p class="labels">tasks</p>
@@ -22,4 +14,32 @@
       ></i>
     </li>
   </ul>
+  <div
+    class="completed-task-header"
+    *ngIf="completedTasks.length > 0"
+    (click)="toggleCompletedTasks()"
+  >
+    <i class="material-icons">{{ toggleIcon }}</i>
+    <p>completed</p>
+    <hr />
+  </div>
+  <div class="completed-task" *ngIf="isCompletedToggleActive">
+    <ul class="task-list" id="task-list" *ngFor="let task of completedTasks">
+      <li [ngClass]="task.id == selectedTaskId ? 'task task-selected' : 'task'">
+        <i class="fa-solid fa-circle-check" (click)="applyTaskStatus(task)"></i>
+        <div class="task-info" (click)="applySelectedTask(task)">
+          <p class="task-name" [appStrikeout]="task.isCompleted">
+            {{ task.name }}
+          </p>
+          <p class="labels">tasks</p>
+        </div>
+        <i
+          [ngClass]="
+            task.isImportant ? 'fa-solid fa-star' : 'fa-regular fa-star'
+          "
+          (click)="applyTaskImportant(task)"
+        ></i>
+      </li>
+    </ul>
+  </div>
 </div>

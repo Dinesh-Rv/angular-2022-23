@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import { ToDoService } from 'src/app/to-do.service';
 import { Task } from 'src/app/Task';
 import { CommonService } from 'src/app/common.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-todo-main',
@@ -11,7 +12,7 @@ import { CommonService } from 'src/app/common.service';
   styleUrls: ['./todo-main.component.scss'],
 })
 export class TodoMainComponent implements OnInit {
-  currentDate: any;
+  currentDate!: any;
   isSideBarVisible!: boolean;
   taskName!: string;
   newTask!: Task;
@@ -21,11 +22,12 @@ export class TodoMainComponent implements OnInit {
 
   constructor(
     private toDoService: ToDoService,
-    private commonService: CommonService
+    private commonService: CommonService,
+    private datePipe: DatePipe
   ) {}
 
   ngOnInit() {
-    this.currentDate = moment().format('dddd, MMMM D');
+    this.currentDate = this.datePipe.transform(Date.now(), 'EEEE, MMMM d');
     this.commonService.presentCategory.subscribe((presentCategory) => {
       this.selectedCategory = presentCategory;
     });
@@ -39,23 +41,29 @@ export class TodoMainComponent implements OnInit {
 
   addTask(taskName: string) {
     let taskImportance = false;
-    if (this.selectedCategory.id == 2) {
-      taskImportance = true;
-    }
-    let newTask = {
-      id: 0,
-      name: taskName,
-      isCompleted: false,
-      createdAt: '',
-      categoryIds: [this.selectedCategory.id],
-      note: '',
-      noteSavedAt: '',
-      isImportant: taskImportance,
-    };
-    this.toDoService.saveOrUpdateTask(newTask, 'task').subscribe((response) => {
-      if (response) {
-        this.newTask = newTask;
+    if (taskName.trim() != '') {
+      if (this.selectedCategory.id == 2) {
+        taskImportance = true;
       }
-    });
+      let newTask = {
+        id: 0,
+        name: taskName,
+        isCompleted: false,
+        createdAt: '',
+        categoryIds: [this.selectedCategory.id],
+        note: '',
+        noteSavedAt: '',
+        isImportant: taskImportance,
+      };
+      this.toDoService
+        .saveOrUpdateTask(newTask, 'task')
+        .subscribe((response) => {
+          if (response) {
+            this.newTask = newTask;
+          }
+        });
+    } else {
+      alert('Please Enter a valid task Name');
+    }
   }
 }

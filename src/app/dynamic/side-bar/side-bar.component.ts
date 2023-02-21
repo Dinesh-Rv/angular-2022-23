@@ -26,6 +26,9 @@ export class SideBarComponent implements OnInit {
   }
 
   addCategory(categoryName: string) {
+    if (!categoryName) {
+      categoryName = 'Untitled';
+    }
     let newCategory = {
       id: 0,
       name: categoryName,
@@ -36,6 +39,9 @@ export class SideBarComponent implements OnInit {
       .subscribe((response) => {
         if (response) {
           this.newCategory = newCategory;
+          this.toDoService.getCategories().subscribe((categories) => {
+            this.categories = categories as Category[];
+          });
         }
       });
   }

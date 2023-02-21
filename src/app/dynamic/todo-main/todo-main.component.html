@@ -13,8 +13,8 @@
     <div class="center-head-desc">
       <p id="main-head" *ngIf="selectedCategory">{{ selectedCategory.name }}</p>
     </div>
-    <div class="date-info">
-      <p id="current-date">
+    <div class="date-info" *ngIf="selectedCategory">
+      <p id="current-date" *ngIf="selectedCategory.id == 1">
         {{ currentDate }}
       </p>
     </div>

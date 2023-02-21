@@ -1,0 +1,31 @@
+<div class="login-main">
+  <div class="login-center">
+    <div class="sign-in-info">
+      <p>Sign in</p>
+      <div class="login-message">{{ errorMessage }}</div>
+    </div>
+    <div class="sign-in-console" (keyup.enter)="submitLogin()">
+      <input
+        type="text"
+        class="username-input"
+        placeholder="Enter Username"
+        [(ngModel)]="userName"
+      />
+      <input
+        type="password"
+        class="password-input"
+        placeholder="Enter Password"
+        [(ngModel)]="password"
+      />
+      <div class="submit-login" (click)="submitLogin()">
+        <p>Submit</p>
+      </div>
+    </div>
+    <div class="login-options">
+      <div class="create-new-account">
+        <p>No account?</p>
+        <div class="create-account">create one!</div>
+      </div>
+    </div>
+  </div>
+</div>

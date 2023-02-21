@@ -55,9 +55,18 @@
           <p>Add file</p>
         </div>
         <div class="selected-task-note">
-          <input class="add-note" type="text" placeholder="Add note" />
+          <input
+            class="add-note"
+            value="{{ selectedTask.note }}"
+            type="text"
+            [(ngModel)]="noteText"
+            placeholder="Add note"
+            (keyup.enter)="addNote(noteText)"
+          />
           <div class="update-status">
-            <p id="note-status"></p>
+            <p id="note-status" *ngIf="selectedTask.noteSavedAt">
+              saved at {{ selectedTask.noteSavedAt }}
+            </p>
           </div>
         </div>
       </div>

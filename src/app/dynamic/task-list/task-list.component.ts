@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/common.service';
 import { Task } from 'src/app/Task';
 import { ToDoService } from 'src/app/to-do.service';
@@ -17,6 +11,10 @@ import { ToDoService } from 'src/app/to-do.service';
 export class TaskListComponent implements OnChanges, OnInit {
   @Input() newTask!: Task;
   tasks: Task[] = [];
+  completedTasks: Task[] = [];
+  inCompleteTasks: Task[] = [];
+  isCompletedToggleActive: boolean = false;
+  toggleIcon: string = 'keyboard_arrow_right';
   selectedTaskId: number = 0;
   constructor(
     private toDoService: ToDoService,
@@ -30,7 +28,20 @@ export class TaskListComponent implements OnChanges, OnInit {
         categoryId = category.id;
         this.toDoService.getTasks(categoryId).subscribe((existingTasks) => {
           this.tasks = existingTasks as Task[];
+          this.separateTask();
         });
+      }
+    });
+  }
+
+  separateTask() {
+    this.completedTasks = [];
+    this.inCompleteTasks = [];
+    this.tasks.forEach((task) => {
+      if (task.isCompleted) {
+        this.completedTasks.push(task);
+      } else {
+        this.inCompleteTasks.push(task);
       }
     });
   }
@@ -44,6 +55,7 @@ export class TaskListComponent implements OnChanges, OnInit {
       eventTask.isCompleted = false;
     } else {
       eventTask.isCompleted = true;
+      this.completedTasks.push;
     }
     this.saveOrUpdateTask(eventTask);
   }
@@ -63,15 +75,27 @@ export class TaskListComponent implements OnChanges, OnInit {
   saveOrUpdateTask(task: Task) {
     this.toDoService.saveOrUpdateTask(task, 'task').subscribe((response) => {
       if (response) {
-        this.getAllTasks;
+        this.getAllTasks();
       }
     });
+  }
+
+  toggleCompletedTasks() {
+    if (this.isCompletedToggleActive) {
+      this.isCompletedToggleActive = false;
+      this.toggleIcon = 'keyboard_arrow_right';
+    } else {
+      this.isCompletedToggleActive = true;
+      this.toggleIcon = 'keyboard_arrow_down';
+    }
   }
 
   ngOnInit() {
     this.commonService.presentTask.subscribe((presentTask) => {
       if (presentTask) {
         this.selectedTaskId = presentTask.id;
+      } else {
+        this.selectedTaskId = 0;
       }
     });
   }

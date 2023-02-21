@@ -4,6 +4,7 @@
     margin-left: 40%;
     .material-icons {
       font-size: 200px;
+      animation: rotation 2s infinite linear;
     }
   }
 
@@ -30,6 +31,15 @@
     div:hover {
       background-color: #215aba;
       cursor: pointer;
+    }
+  }
+
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
     }
   }
 }
