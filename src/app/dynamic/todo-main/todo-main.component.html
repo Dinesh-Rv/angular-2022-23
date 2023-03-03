@@ -1,13 +1,16 @@
 <app-side-bar *ngIf="isSideBarVisible" (iconName)="(menuIcon)"></app-side-bar>
-<div
-  class="center"
-  [ngClass]="selectedTask == null ? 'center center-right-wide' : 'center'"
-  id="center-block"
->
+<app-nav-bar *ngIf="!isSideBarVisible"></app-nav-bar>
+<div class="center" [ngClass]="toDoMainClass" id="center-block">
   <div class="center-head" id="center-head">
-    <div class="center-head-icon" id="center-head-icon">
+    <div
+      [ngClass]="
+        isSideBarVisible ? 'center-head-icon' : 'center-head-icon clickable'
+      "
+      id="center-head-icon"
+      (click)="openLeftSide()"
+    >
       <i class="material-icons" *ngIf="selectedCategory">{{
-        selectedCategory.iconName
+        isSideBarVisible ? selectedCategory.iconName : "menu"
       }}</i>
     </div>
     <div class="center-head-desc">
@@ -40,7 +43,7 @@
         <i class="material-icons">calendar_month</i>
         <i class="material-icons">notifications</i>
         <i class="material-icons">repeat</i>
-        <div class="add-task" id="add-task">
+        <div class="add-task" id="add-task" (click)="addTask(taskName)">
           <div>Add</div>
         </div>
       </div>

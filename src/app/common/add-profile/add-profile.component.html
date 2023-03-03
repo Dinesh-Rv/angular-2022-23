@@ -1,0 +1,59 @@
+<div class="side-bar">
+  <div class="todo-text">
+    <p>TO DO</p>
+  </div>
+  <div class="description">
+    <p>Sign Up.</p>
+  </div>
+  <div class="back-to-login" routerLink="/login">
+    <p>Already have an account?</p>
+  </div>
+</div>
+<div class="profile-settings">
+  <div class="profile-description">
+    <p>Enter Profile Details</p>
+    <i>Create a user account by adding details</i>
+  </div>
+  <div class="user-name">
+    <div class="edit-header">
+      <p>Enter UserName</p>
+    </div>
+    <input [(ngModel)]="userName" class="change-user-name" required/>
+  </div>
+  <div class="email-id">
+    <div class="edit-header">
+      <p>Enter Email</p>
+    </div>
+
+    <input [(ngModel)]="userEmail" class="change-user-email" required />
+  </div>
+  <div class="phone-number">
+    <div class="edit-header">
+      <p>Enter Phone Number</p>
+    </div>
+    <input [(ngModel)]="userPhoneNumber" class="change-phone-number" required />
+  </div>
+  <div class="password">
+    <div class="edit-header">
+      <p>Enter new password</p>
+    </div>
+    <input
+      [(ngModel)]="userPassword"
+      class="add-password"
+      type="password"
+      required
+    />
+  </div>
+  <div class="confirm-password">
+    <div class="edit-header">
+      <p>Confirm new password</p>
+    </div>
+    <input [(ngModel)]="userConfirmPassword" class="add-password" required />
+  </div>
+  <div class="submit-details" (click)="addUser()">
+    <p>Save</p>
+  </div>
+  <div class="error-message">
+    <p>{{ errorMessage }}</p>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
@@ -7,16 +8,12 @@ import { Router } from '@angular/router';
 export class AuthService {
   isUserLoggedIn!: boolean;
 
-  constructor(private router: Router) {}
+  constructor(
+    private http: HttpClient,
+  ) {}
 
   applyLoginCredentials(userName: string, password: string) {
-    if (userName == 'user' && password == 'jump') {
-      this.isUserLoggedIn = true;
-      this.router.navigate(['todo']);
-      return true;
-    } else {
-      return false
-    }
+    return this.http.get(environment.DEFAULT_URL + 'user/' + userName + '/' + password);
   }
 
   getUserLoggedIn() {

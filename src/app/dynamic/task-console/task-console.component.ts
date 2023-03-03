@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
-import { CommonService } from 'src/app/common.service';
+import { CommonService } from 'src/app/service/common.service';
 import { Task } from 'src/app/Task';
-import { ToDoService } from 'src/app/to-do.service';
+import { ToDoService } from 'src/app/service/to-do.service';
 
 @Component({
   selector: 'app-task-console',
@@ -29,7 +29,7 @@ export class TaskConsoleComponent implements OnInit {
     } else {
       eventTask.isCompleted = true;
     }
-    this.saveOrUpdateTask(eventTask);
+    this.commonService.applyTaskConsoleValue(eventTask);
   }
 
   applyTaskImportant(eventTask: Task) {
@@ -41,7 +41,7 @@ export class TaskConsoleComponent implements OnInit {
       eventTask.categoryIds.push(2);
       eventTask.isImportant = true;
     }
-    this.saveOrUpdateTask(eventTask);
+    this.commonService.applyTaskConsoleValue(eventTask);
   }
 
   saveOrUpdateTask(task: Task) {

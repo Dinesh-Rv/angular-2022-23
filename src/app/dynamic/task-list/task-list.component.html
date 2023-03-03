@@ -1,6 +1,9 @@
 <div class="task-list-container">
   <ul class="task-list" id="task-list" *ngFor="let task of inCompleteTasks">
-    <li [ngClass]="task.id == selectedTaskId ? 'task task-selected' : 'task'">
+    <li
+      [ngClass]="task.id == selectedTaskId ? 'task task-selected' : 'task'"
+      *ngIf="!task.isCompleted"
+    >
       <i class="fa-regular fa-circle" (click)="applyTaskStatus(task)"></i>
       <div class="task-info" (click)="applySelectedTask(task)">
         <p class="task-name" [appStrikeout]="task.isCompleted">
@@ -16,14 +19,17 @@
   </ul>
   <div
     class="completed-task-header"
-    *ngIf="completedTasks.length > 0"
+    *ngIf="completedTasks.length > 0 && selectedCategoryId != 2"
     (click)="toggleCompletedTasks()"
   >
     <i class="material-icons">{{ toggleIcon }}</i>
     <p>completed</p>
     <hr />
   </div>
-  <div class="completed-task" *ngIf="isCompletedToggleActive">
+  <div
+    class="completed-task"
+    *ngIf="isCompletedToggleActive && selectedCategoryId != 2"
+  >
     <ul class="task-list" id="task-list" *ngFor="let task of completedTasks">
       <li [ngClass]="task.id == selectedTaskId ? 'task task-selected' : 'task'">
         <i class="fa-solid fa-circle-check" (click)="applyTaskStatus(task)"></i>

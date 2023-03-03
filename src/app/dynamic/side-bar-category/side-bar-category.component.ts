@@ -7,8 +7,8 @@ import {
   OnInit,
 } from '@angular/core';
 import { Category } from 'src/app/category';
-import { CommonService } from 'src/app/common.service';
-import { ToDoService } from 'src/app/to-do.service';
+import { CommonService } from 'src/app/service/common.service';
+import { ToDoService } from 'src/app/service/to-do.service';
 
 @Component({
   selector: 'app-side-bar-category',
@@ -35,10 +35,6 @@ export class SideBarCategoryComponent implements OnChanges, OnInit {
       if (!this.selectedCategory) {
         this.selectedCategory = this.categories[0];
         this.commonService.applySelectedCategory(this.selectedCategory);
-      } else {
-        this.commonService.applySelectedCategory(
-          this.categories[this.categories.length - 1]
-        );
       }
     });
   }

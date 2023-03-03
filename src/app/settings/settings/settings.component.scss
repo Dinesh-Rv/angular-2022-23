@@ -1,31 +1,78 @@
 .settings {
   .settings-icon {
+    vertical-align: middle;
+    display: inline-block;
     margin-top: 5%;
-    margin-left: 40%;
+    margin-left: 2%;
     .material-icons {
-      font-size: 200px;
-      animation: rotation 2s infinite linear;
+      color: #2564cf;
+      font-size: 50px;
+      animation: rotation 24s infinite linear;
+    }
+  }
+
+  .settings-header {
+    vertical-align: bottom;
+    display: inline-block;
+    color: #215aba;
+    font-weight: 600;
+    font-size: 28px;
+    height: 50px;
+    margin-left: 20px;
+    p {
+      margin: 0px;
     }
   }
 
   .settings-console {
+    background-color: #ffffff;
     margin-top: 50px;
-    height: 100px;
+    height: 150px;
+    border: 2px solid #215aba;
+    width: 35%;
+    margin-left: 30%;
     div {
       color: white;
-      text-align: center;
-      margin-left: 43%;
-      width: 10%;
-      height: 30px;
-      border-radius: 5px;
+      margin-left: 70px;
     }
     .back-button {
+      border-radius: 5px;
+      text-align: center;
+      margin-top: 5px;
       background-color: #2564cf;
-      margin-bottom: 10px;
+      width: 70%;
+      height: 25%;
+      p {
+        padding-top: 5px;
+        margin: 0px;
+        margin-bottom: 2%;
+      }
     }
     .profile-settings {
+      border-radius: 5px;
+      text-align: center;
       margin-top: 10px;
       background-color: #2564cf;
+      width: 70%;
+      height: 25%;
+      p {
+        padding-top: 5px;
+        margin: 0px;
+        margin-bottom: 2%;
+      }
+    }
+    .log-out {
+      border-radius: 5px;
+      text-align: center;
+      margin-top: 10px;
+      background-color: #2564cf;
+      width: 70%;
+      height: 25%;
+      p {
+        padding-top: 5px;
+        margin: 0px;
+        margin-bottom: 2%;
+      }
     }
 
     div:hover {

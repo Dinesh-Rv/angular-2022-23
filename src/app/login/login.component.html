@@ -1,8 +1,11 @@
 <div class="login-main">
   <div class="login-center">
+    <div class="login-logo">
+      <p>TO DO</p>
+      <div class="login-message">{{ errorMessage }}</div>
+    </div>
     <div class="sign-in-info">
       <p>Sign in</p>
-      <div class="login-message">{{ errorMessage }}</div>
     </div>
     <div class="sign-in-console" (keyup.enter)="submitLogin()">
       <input
@@ -24,7 +27,7 @@
     <div class="login-options">
       <div class="create-new-account">
         <p>No account?</p>
-        <div class="create-account">create one!</div>
+        <div class="create-account" routerLink="../newUser">create one!</div>
       </div>
     </div>
   </div>

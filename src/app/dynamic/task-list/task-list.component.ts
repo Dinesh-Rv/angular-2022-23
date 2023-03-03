@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { CommonService } from 'src/app/common.service';
+import { CommonService } from 'src/app/service/common.service';
 import { Task } from 'src/app/Task';
-import { ToDoService } from 'src/app/to-do.service';
+import { ToDoService } from 'src/app/service/to-do.service';
 
 @Component({
   selector: 'app-task-list',
@@ -15,6 +15,7 @@ export class TaskListComponent implements OnChanges, OnInit {
   inCompleteTasks: Task[] = [];
   isCompletedToggleActive: boolean = false;
   toggleIcon: string = 'keyboard_arrow_right';
+  selectedCategoryId: number = 0;
   selectedTaskId: number = 0;
   constructor(
     private toDoService: ToDoService,
@@ -58,6 +59,9 @@ export class TaskListComponent implements OnChanges, OnInit {
       this.completedTasks.push;
     }
     this.saveOrUpdateTask(eventTask);
+    if (this.selectedTaskId === eventTask.id) {
+      this.commonService.applySelectedTask(eventTask);
+    }
   }
 
   applyTaskImportant(eventTask: Task) {
@@ -70,6 +74,9 @@ export class TaskListComponent implements OnChanges, OnInit {
       eventTask.isImportant = true;
     }
     this.saveOrUpdateTask(eventTask);
+    if (this.selectedTaskId === eventTask.id) {
+      this.commonService.applySelectedTask(eventTask);
+    }
   }
 
   saveOrUpdateTask(task: Task) {
@@ -98,6 +105,23 @@ export class TaskListComponent implements OnChanges, OnInit {
         this.selectedTaskId = 0;
       }
     });
+    this.commonService.updatedTaskValue.subscribe((task) => {
+      if (task) {
+        this.toDoService
+          .saveOrUpdateTask(task, 'task')
+          .subscribe((response) => {
+            if (response) {
+              this.getAllTasks();
+            }
+          });
+      }
+    });
+    this.commonService.presentCategory.subscribe((presentCategory) => {
+      if (presentCategory) {
+        this.selectedCategoryId = presentCategory.id;
+      }
+    });
+    // this.commonService.updateTask.subscribe((task) => { this.service.saveOry   })
   }
 
   ngOnChanges() {

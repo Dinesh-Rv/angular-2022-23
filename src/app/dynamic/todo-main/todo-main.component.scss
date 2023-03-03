@@ -14,6 +14,10 @@
       font-weight: 600;
       margin-right: 8px;
       vertical-align: middle;
+
+      .material-icons {
+        pointer-events: none;
+      }
     }
 
     .center-head-desc {
@@ -49,6 +53,10 @@
     }
 
     .menu:hover {
+      cursor: pointer;
+    }
+
+    .clickable:hover {
       cursor: pointer;
     }
   }
@@ -133,4 +141,12 @@
 
 .center-right-wide {
   width: 73%;
+}
+
+.center-left-wide {
+  width: 72%;
+}
+
+.center-full {
+  width: 98%;
 }

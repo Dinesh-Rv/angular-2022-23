@@ -3,7 +3,6 @@ import {
   ElementRef,
   Input,
   OnChanges,
-  Renderer2,
 } from '@angular/core';
 
 @Directive({
@@ -11,7 +10,7 @@ import {
 })
 export class StrikeoutDirective implements OnChanges {
   @Input() appStrikeout!: boolean;
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
+  constructor(private elementRef: ElementRef) {}
 
   ngOnChanges() {
     if (this.appStrikeout) {

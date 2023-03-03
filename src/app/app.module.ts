@@ -3,12 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ToDoService } from './to-do.service';
+import { ToDoService } from './service/to-do.service';
 import { DynamicModule } from './dynamic/dynamic.module';
 import { CommonModule } from './common/common.module';
 import { LoginComponent } from './login/login.component';
-import { LoaderInterceptor } from './loader.interceptor';
-import { LoaderComponent } from './loader/loader.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   NgxUiLoaderModule,
@@ -17,6 +15,8 @@ import {
 } from 'ngx-ui-loader';
 import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ProfileComponent } from './settings/profile/profile.component';
+import { AddProfileComponent } from './common/add-profile/add-profile.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -30,14 +30,14 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   fgsColor: '#0067b8',
   fgsPosition: 'center-center',
   fgsSize: 60,
-  fgsType: 'square-loader',
+  fgsType: 'rectangle-bounce',
   gap: 24,
   logoPosition: 'center-center',
-  logoSize: 120,
-  logoUrl: 'assets/todo-logo.png',
+  logoSize: 200,
+  logoUrl: 'assets/main-logo.gif',
   masterLoaderId: 'master',
   overlayBorderRadius: '0',
-  overlayColor: 'rgba(40,40,40,0.8)',
+  overlayColor: '#FFFFFF',
   pbColor: '#0067b8',
   pbDirection: 'ltr',
   pbThickness: 3,
@@ -46,11 +46,16 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   textColor: '#FFFFFF',
   textPosition: 'center-center',
   maxTime: -1,
-  minTime: 3000,
+  minTime: 1500,
 };
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, LoaderComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    ProfileComponent,
+    AddProfileComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -62,15 +67,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     FormsModule,
     NgxUiLoaderRouterModule,
   ],
-  providers: [
-    ToDoService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoaderInterceptor,
-      multi: true,
-    },
-    DatePipe,
-  ],
+  providers: [ToDoService, DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

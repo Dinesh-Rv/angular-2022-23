@@ -1,0 +1,56 @@
+<div class="side-bar">
+  <div class="todo-text" routerLink="/todo">
+    <p>TO DO</p>
+  </div>
+  <div class="description">
+    <p>Profile Settings.</p>
+  </div>
+  <div class="back-to-settings" routerLink="/settings">
+    <p>back to settings</p>
+  </div>
+</div>
+<div class="profile-settings">
+  <div class="profile-description">
+    <p>Edit profile</p>
+    <i>You can able to edit following details using edit profile</i>
+  </div>
+  <div class="user-name">
+    <div class="edit-header">
+      <p>
+        {{ isInputLocked ? "UserName" : "Edit UserName" }}
+      </p>
+    </div>
+    <input
+      [(ngModel)]="userName"
+      [readonly]="isInputLocked"
+      class="change-user-name"
+    />
+  </div>
+  <div class="email-id">
+    <div class="edit-header">
+      <p>{{ isInputLocked ? "Email" : "Edit Email" }}</p>
+    </div>
+
+    <input
+      [(ngModel)]="userEmail"
+      [readOnly]="isInputLocked"
+      class="change-user-email"
+    />
+  </div>
+  <div class="phone-number">
+    <div class="edit-header">
+      <p>{{ isInputLocked ? "Phone Number" : "Edit Phone Number" }}</p>
+    </div>
+    <input
+      [(ngModel)]="userPhoneNumber"
+      [readOnly]="isInputLocked"
+      class="change-phone-number"
+    />
+  </div>
+  <div class="edit-user" *ngIf="isInputLocked" (click)="editProfile()">
+    <p>Edit Profile</p>
+  </div>
+  <div class="submit-details" (click)="saveUser()" *ngIf="!isInputLocked">
+    <p>Save</p>
+  </div>
+</div>

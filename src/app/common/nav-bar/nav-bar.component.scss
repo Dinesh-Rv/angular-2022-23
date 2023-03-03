@@ -28,15 +28,23 @@
   }
 
   .to-do-link {
-    height: 25px;
-    width: 60px;
-    text-align: center;
-    margin: 0px;
+    margin-left: 20px;
+    opacity: 0.9;
+    height: 30px;
+    width: 22px;
+    border: 2px solid white;
 
     .to-do {
+      font-size: 12px;
+      margin: 0;
       color: #ffffff;
       text-decoration: none;
       font-weight: 600;
+    }
+
+    .to-do:hover {
+      cursor: pointer;
+      text-decoration: line-through;
     }
   }
 
@@ -81,7 +89,7 @@
     text-align: left;
     width: 32.5%;
     height: 32px;
-    margin-left: 21%;
+    margin-left: 23%;
     border-radius: 5px;
 
     .material-icons {

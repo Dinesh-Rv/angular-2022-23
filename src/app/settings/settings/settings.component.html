@@ -3,11 +3,18 @@
   <div class="settings-icon">
     <i class="material-icons">settings</i>
   </div>
+  <div class="settings-header">
+    <p>Settings</p>
+  </div>
   <div class="settings-console">
-    <div class="back-button" routerLink="../todo">back to todo</div>
-    <div class="profile-settings" routerLink="../settings/profile">
-      profile-settings
+    <div class="back-button" routerLink="../todo">
+      <p>back to todo</p>
     </div>
+    <div class="profile-settings" routerLink="../settings/profile">
+      <p>profile-settings</p>
+    </div>
+    <div class="log-out" (click)="logOutUser()"><p>Log Out</p></div>
   </div>
 </div>
+
 <router-outlet></router-outlet>

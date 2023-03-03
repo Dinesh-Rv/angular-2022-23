@@ -1,7 +1,8 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { Category } from 'src/app/category';
-import { CommonService } from 'src/app/common.service';
-import { ToDoService } from 'src/app/to-do.service';
+import { CommonService } from 'src/app/service/common.service';
+import { ToDoService } from 'src/app/service/to-do.service';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-side-bar',
@@ -27,15 +28,15 @@ export class SideBarComponent implements OnInit {
 
   addCategory(categoryName: string) {
     if (!categoryName) {
-      categoryName = 'Untitled';
+      categoryName = environment.UNTITLED_CATEGORY_NAME;
     }
     let newCategory = {
       id: 0,
       name: categoryName,
-      iconName: 'list',
+      iconName: environment.USER_CATEGORY_ICON,
     };
     this.toDoService
-      .addCategory(newCategory, 'category')
+      .addCategory(newCategory, environment.CATEGORY)
       .subscribe((response) => {
         if (response) {
           this.newCategory = newCategory;
