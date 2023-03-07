@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
+import { User } from '../User';
 
 @Injectable({
   providedIn: 'root',
@@ -8,12 +9,26 @@ import { environment } from 'src/environments/environment.development';
 export class AuthService {
   isUserLoggedIn!: boolean;
 
-  constructor(
-    private http: HttpClient,
-  ) {}
+  constructor(private http: HttpClient) {}
 
   applyLoginCredentials(userName: string, password: string) {
-    return this.http.get(environment.DEFAULT_URL + 'user/' + userName + '/' + password);
+    let httpHeaders = new HttpHeaders();
+    httpHeaders.append('Content-type', 'application/json');
+    const requestOption = {
+      headers: httpHeaders,
+    };
+    let loginUser = {
+      id: 0,
+      name: userName,
+      password: password,
+      emailId: userName,
+      phoneNumber: userName,
+    };
+    return this.http.post(
+      environment.DEFAULT_URL + 'login',
+      loginUser,
+      requestOption
+    );
   }
 
   getUserLoggedIn() {

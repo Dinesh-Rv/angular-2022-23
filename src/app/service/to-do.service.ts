@@ -15,18 +15,18 @@ type Category = {
 export class ToDoService {
   constructor(private http: HttpClient) {}
 
-  getCategories() {
-    return this.http.get(environment.DEFAULT_URL + 'categories');
+  getCategories(userId: number) {
+    return this.http.get(environment.DEFAULT_URL + 'categories' + '/' + userId);
   }
 
-  addCategory(category: Category, url: string) {
+  addCategory(category: Category, userId: number, url: string) {
     let httpHeaders = new HttpHeaders();
     httpHeaders.append('Content-type', 'application/json');
     const requestOption = {
       headers: httpHeaders,
     };
     return this.http.post(
-      environment.DEFAULT_URL + url,
+      environment.DEFAULT_URL + url + '/' + userId,
       category,
       requestOption
     );
@@ -41,8 +41,10 @@ export class ToDoService {
     return this.http.post(environment.DEFAULT_URL + url, task, requestOption);
   }
 
-  getTasks(categoryId: number) {
-    return this.http.get(environment.DEFAULT_URL + 'task/' + categoryId);
+  getTasks(categoryId: number, userId: number) {
+    return this.http.get(
+      environment.DEFAULT_URL + 'task/' + categoryId + '/' + userId
+    );
   }
 
   saveOrUpdateUser(user: User, url: string) {

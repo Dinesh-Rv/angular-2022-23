@@ -30,12 +30,16 @@ export class SideBarCategoryComponent implements OnChanges, OnInit {
   }
 
   getAllCategories() {
-    this.toDoService.getCategories().subscribe((existingCategories) => {
-      this.categories = existingCategories as Category[];
-      if (!this.selectedCategory) {
-        this.selectedCategory = this.categories[0];
-        this.commonService.applySelectedCategory(this.selectedCategory);
-      }
+    this.commonService.presentUser.subscribe((presentUser) => {
+      this.toDoService
+        .getCategories(presentUser.id)
+        .subscribe((existingCategories) => {
+          this.categories = existingCategories as Category[];
+          if (!this.selectedCategory) {
+            this.selectedCategory = this.categories[0];
+            this.commonService.applySelectedCategory(this.selectedCategory);
+          }
+        });
     });
   }
 

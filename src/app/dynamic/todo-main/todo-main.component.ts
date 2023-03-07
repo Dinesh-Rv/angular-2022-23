@@ -5,6 +5,7 @@ import { Task } from 'src/app/Task';
 import { CommonService } from 'src/app/service/common.service';
 import { DatePipe } from '@angular/common';
 import { environment } from 'src/environments/environment.development';
+import { User } from 'src/app/User';
 
 @Component({
   selector: 'app-todo-main',
@@ -19,6 +20,7 @@ export class TodoMainComponent implements OnInit {
   menuIcon!: string;
   selectedCategory!: Category;
   selectedTask!: Task;
+  presentUser!: User;
   staticCategoryId: number = 5;
   toDoMainClass!: string;
 
@@ -40,6 +42,11 @@ export class TodoMainComponent implements OnInit {
     this.commonService.isSideBarVisible.subscribe((isVisible) => {
       this.isSideBarVisible = isVisible;
       this.adjustToDoMain();
+    });
+    this.commonService.presentUser.subscribe((presentUser) => {
+      if (presentUser) {
+        this.presentUser = presentUser;
+      }
     });
   }
 
@@ -71,6 +78,7 @@ export class TodoMainComponent implements OnInit {
         note: '',
         noteSavedAt: '',
         isImportant: taskImportance,
+        userId: this.presentUser.id,
       };
       this.toDoService
         .saveOrUpdateTask(newTask, 'task')

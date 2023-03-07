@@ -1,20 +1,16 @@
 .login-main {
   height: 100%;
   width: 100%;
-  background-image: url(https://wallpaperaccess.com/full/1092478.jpg);
-  background-size: cover;
-  background-position: center;
+  background-image: url(https://cdn.dribbble.com/users/77121/screenshots/15191750/media/0ce749e630ca31ffd76e105b09340b45.gif);
+  background-size: 65% 100%;
+  background-position: right;
   display: inline-block;
 
   .login-center {
-    border-radius: 5px;
-    opacity: 0.8;
     display: inline-block;
     background-color: #ffffff;
     width: 450px;
-    height: 400px;
-    margin-top: 8%;
-    margin-left: 32%;
+    height: 100%;
     vertical-align: middle;
 
     .login-logo {

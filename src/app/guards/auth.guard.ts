@@ -6,12 +6,13 @@ import {
 } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { Router } from '@angular/router';
+import { CommonService } from '../service/common.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private commonService: CommonService) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -20,6 +21,7 @@ export class AuthGuard implements CanActivate {
     let isUserLoggedIn: boolean = false;
 
     for (let user in loginUser) {
+      this.commonService.applyLoggedUser(loginUser);
       isUserLoggedIn = true;
       break;
     }

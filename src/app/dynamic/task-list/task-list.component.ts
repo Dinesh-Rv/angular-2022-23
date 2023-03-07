@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/service/common.service';
 import { Task } from 'src/app/Task';
 import { ToDoService } from 'src/app/service/to-do.service';
+import { User } from 'src/app/User';
 
 @Component({
   selector: 'app-task-list',
@@ -17,21 +18,57 @@ export class TaskListComponent implements OnChanges, OnInit {
   toggleIcon: string = 'keyboard_arrow_right';
   selectedCategoryId: number = 0;
   selectedTaskId: number = 0;
+  presentUser!: User;
   constructor(
     private toDoService: ToDoService,
     private commonService: CommonService
   ) {}
 
-  getAllTasks() {
-    let categoryId!: number;
-    this.commonService.presentCategory.subscribe((category) => {
-      if (category) {
-        categoryId = category.id;
-        this.toDoService.getTasks(categoryId).subscribe((existingTasks) => {
-          this.tasks = existingTasks as Task[];
-          this.separateTask();
-        });
+  ngOnInit() {
+    this.commonService.presentUser.subscribe((presentUser) => {
+      if (presentUser) {
+        this.presentUser = presentUser;
       }
+    });
+    this.commonService.presentTask.subscribe((presentTask) => {
+      if (presentTask) {
+        this.selectedTaskId = presentTask.id;
+      } else {
+        this.selectedTaskId = 0;
+      }
+    });
+    this.commonService.updatedTaskValue.subscribe((task) => {
+      if (task) {
+        this.toDoService
+          .saveOrUpdateTask(task, 'task')
+          .subscribe((response) => {
+            if (response) {
+              this.getAllTasks();
+            }
+          });
+      }
+    });
+    this.commonService.presentCategory.subscribe((presentCategory) => {
+      if (presentCategory) {
+        this.selectedCategoryId = presentCategory.id;
+      }
+    });
+  }
+
+  getAllTasks() {
+    this.commonService.presentUser.subscribe((user) => {
+      let categoryId!: number;
+      this.commonService.presentCategory.subscribe((category) => {
+        if (category) {
+          categoryId = category.id;
+          this.toDoService
+            .getTasks(categoryId, user.id)
+            .subscribe((existingTasks) => {
+              this.tasks = existingTasks as Task[];
+              this.separateTask();
+            });
+        }
+      });
     });
   }
 
@@ -95,33 +132,6 @@ export class TaskListComponent implements OnChanges, OnInit {
       this.isCompletedToggleActive = true;
       this.toggleIcon = 'keyboard_arrow_down';
     }
-  }
-
-  ngOnInit() {
-    this.commonService.presentTask.subscribe((presentTask) => {
-      if (presentTask) {
-        this.selectedTaskId = presentTask.id;
-      } else {
-        this.selectedTaskId = 0;
-      }
-    });
-    this.commonService.updatedTaskValue.subscribe((task) => {
-      if (task) {
-        this.toDoService
-          .saveOrUpdateTask(task, 'task')
-          .subscribe((response) => {
-            if (response) {
-              this.getAllTasks();
-            }
-          });
-      }
-    });
-    this.commonService.presentCategory.subscribe((presentCategory) => {
-      if (presentCategory) {
-        this.selectedCategoryId = presentCategory.id;
-      }
-    });
-    // this.commonService.updateTask.subscribe((task) => { this.service.saveOry   })
   }
 
   ngOnChanges() {
