@@ -39,7 +39,7 @@ export class ProfileComponent implements OnInit {
         .saveOrUpdateUser(presentUser, 'user')
         .subscribe((response) => {
           if (response) {
-            this.router.navigate(['todo']);
+            this.router.navigate(['settings']);
             sessionStorage.setItem('user', JSON.stringify(response));
             alert('profile saved successfully');
           }

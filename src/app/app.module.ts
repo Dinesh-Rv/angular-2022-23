@@ -46,7 +46,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   textColor: '#FFFFFF',
   textPosition: 'center-center',
   maxTime: -1,
-  minTime: 1500,
+  minTime: 1000,
 };
 
 @NgModule({

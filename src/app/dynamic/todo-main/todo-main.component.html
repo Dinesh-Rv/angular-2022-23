@@ -43,7 +43,11 @@
         <i class="material-icons">calendar_month</i>
         <i class="material-icons">notifications</i>
         <i class="material-icons">repeat</i>
-        <div class="add-task" id="add-task" (click)="addTask(taskName)">
+        <div
+          class="add-task"
+          id="add-task"
+          (click)="addTask(taskName); taskName = ''"
+        >
           <div>Add</div>
         </div>
       </div>
